@@ -1,0 +1,12 @@
+.container {
+
+}
+body {
+	background-image: url("assets/background.jpg");
+}
+.img-responsive {
+	margin-bottom: 20px;
+}
+.magicNumber, .score, .counters {
+	background-color: #777;
+}
