@@ -7,6 +7,14 @@ body {
 .img-responsive {
 	margin-bottom: 20px;
 }
-.magicNumber, .score, .counters {
+.winner, .loser, .toGuess, .yourScore {
 	background-color: #777;
+}
+#crystalHolder {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.crystalImage {
+	height:222px;
+	margin-left: 10px;
 }
