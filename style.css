@@ -7,7 +7,7 @@ body {
 .img-responsive {
 	margin-bottom: 20px;
 }
-.winner, .loser, .toGuess, .yourScore {
+.winner, .loser, .toGuess, .scoreHolder {
 	background-color: #777;
 }
 #crystalHolder {

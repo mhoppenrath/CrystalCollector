@@ -8,6 +8,8 @@ $(document).ready(function() {
 	var max=100;
 
 
+
+
 	//links and writes out the variables below
 	$('#win').text(wins);
 	$('#loss').text(losses);
@@ -16,11 +18,11 @@ $(document).ready(function() {
 
 	//our two number generators on for the computer's guess and one for the crystals values
 	function magicGenerator (){
-		var random = Math.floor(Math.random() * (max+ 1));
+		var random = Math.floor(Math.random() * (max-30 + 1) + 30);
 		return random;
 	}
 	function crystalNumber (){
-		var random = Math.floor(Math.random() * (crystalMax));
+		var random = Math.floor(Math.random() * (crystalMax- 1) +1);
 		return random;
 	}
 	var test1 = magicGenerator();
@@ -32,7 +34,7 @@ $(document).ready(function() {
 	function crystalGenerator() {
 		var values = [];
 			while(values.length <4){
-				var value = Math.ceil(Math.random()*12)
+				var value = crystalNumber();
 				var found = false;
 				for (var i = values.length - 1; i >= 0; i--) {
 					if (values[i] === value){
@@ -44,7 +46,8 @@ $(document).ready(function() {
 		console.log(values);
 		for (var i = 0; i < values.length; i++) {
 			var imageCrystal = $('<img>');
-			imageCrystal.attr('data-number', value[i]);
+			console.log('value[i]=', values[i]);
+			imageCrystal.data('number', values[i]);
 			imageCrystal.attr('src', images[i]);
 			imageCrystal.attr('alt', 'crystals');
 			imageCrystal.addClass('crystalImage');
@@ -53,5 +56,42 @@ $(document).ready(function() {
 
 	}
 	crystalGenerator();
+	newGame();
+	function newGame() {
+		counter=0;
+		$('#yourScore').html(counter);
+		var numberToGuess = magicGenerator();
+
+		$('#magicNumber').html(numberToGuess);
+		clicker(numberToGuess);
+
+	}
+	function clicker(n) {
+		$('.crystalImage').on('click', function() {
+
+			console.log($(this).data('number'));
+		counter = counter + $(this).data('number');
+		$('#yourScore').html(counter);
+		console.log("clicked")
+		console.log(counter);
+
+		if (counter === n) {
+			wins ++;
+			$('#win').html(wins);
+			console.log(wins);
+			$('#crystalHolder').empty();
+			crystalGenerator();
+			newGame();
+		}
+		else if (counter> n){
+			losses ++;
+			console.log(losses);
+			$('#loss').html(losses);
+			$('#crystalHolder').empty();
+			crystalGenerator();
+			newGame();
+		}
+	})
+	}
 });
 
