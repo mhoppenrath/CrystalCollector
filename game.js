@@ -4,8 +4,8 @@ $(document).ready(function() {
 	var counter = 0;
 	var wins = 0;
 	var losses = 0;
-	var crystalMax = 10;
-	var max=100;
+	var crystalMax = 12;
+	var max=120;
 
 
 
